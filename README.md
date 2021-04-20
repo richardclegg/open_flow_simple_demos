@@ -12,32 +12,31 @@ This project should work on Linux or MacOS. I used Ubuntu 20.04 and provide some
 
 The best way to do this currently (April 2021) is using a VM as the software is a little old and finicky to compile.
 You will need to install virtualbox. On Ubuntu
-  sudo apt install virtualbox virtualbox-ext-pack
+    sudo apt install virtualbox virtualbox-ext-pack virgualbox-guest-dkms
 
-Start virtualbox and find a VM here: http://opennetlinux.org/binaries/floodlight-vm.zip
-Unzip that to get a file Floodlight-v1.1+Mininet.vmdk
-Start virtualboxmanager and add the .vmdk file as a new machine (you probably want to up the memory a bit and devote a few CPUS to make it usable)
-https://techathlon.com/how-to-run-a-vmdk-file-in-oracle-virtualbox/
+- Start virtualbox and find a VM here: http://opennetlinux.org/binaries/floodlight-vm.zip
+- Unzip that to get a file Floodlight-v1.1+Mininet.vmdk
+- Start virtualboxmanager and add the .vmdk file as a new machine (you probably want to up the memory a bit and devote a few CPUS to make it usable) See https://techathlon.com/how-to-run-a-vmdk-file-in-oracle-virtualbox/
 
 Start the vm - it has a batman themed desktop. Within this open a terminal and type
-  cd ~/floodlight
-  git checkout v1.1
-  git pull
-  git submodule init
-  git submodule update
-  ant
+    cd ~/floodlight
+    git checkout v1.1
+    git pull
+    git submodule init
+    git submodule update
+    ant
 This will take some time to build then
-  java -jar target/floodlight.jar
-  
+    java -jar target/floodlight.jar
+It should start a floodlight controler. You can stop it with Ctrl-C or check it by browsing on firefox to: 
 
 ### Installing Mininet
 
 If you want to play with mininet separate to Floodlight then it is easy enough. On Ubuntu it is easy to configure this should be as simple as
-  sudo apt install mininet
+    sudo apt install mininet
 You can test it with:
-  sudo mn
+    sudo mn
 This should get you to a mininet prompt. You can test it with 
-  h1 ping h2
+    h1 ping h2
 Ctrl-C will stop the ping. Ctrl-D will log you out.
   
 
