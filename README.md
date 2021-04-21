@@ -32,7 +32,7 @@ This will take some time to build then
 
     java -jar target/floodlight.jar
     
-It should start a floodlight controller. You can stop it with Ctrl-C or check it by browsing on firefox to: 
+It should start a floodlight controller. You can stop it with Ctrl-C or check it by browsing on firefox within the VM to: http://127.0.0.1:8080/ui/index.html
 
 ### Installing floodlight without using a VM
 
