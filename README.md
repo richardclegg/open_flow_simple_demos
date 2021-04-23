@@ -1,11 +1,16 @@
 # How to get going.
 
-This project should work on Linux or MacOS. I used Ubuntu 20.04 and provide some notes here. Note, this is certainly not intended as a working guide to installing an OpenFlow controller in a real production environment. This is about how to investigate it as a hobby or because you are interested in networking. Floodlight is not the most well maintained controller out there, I use it because I'm familiar with it. Opendaylight is more modern but a little more effort to set up.
+This project should work on Linux or MacOS. I used Ubuntu 20.04 and provide some notes here. Note, this is certainly not intended as a working guide to installing an OpenFlow controller in a real production environment. This is about how to investigate it as a hobby or because you are interested in networking. Floodlight is not the most well maintained controller out there, I use it because I'm familiar with it even though it is very old now. Similarly I use pox here as a demo not because it is useful in a production environment. Opendaylight is more modern but more effort to set up.
 
 1. [Install floodlight](install_floodlight.md) 
 2. [Install mininet](install_mininet.md)
-3. [Install pox](install_pox.md)
-4. Clone this repository somewhere.
+3. Install pox
+
+This should be as simple as
+
+    git clone http://github.com/noxrepo/pox
+
+5. Clone this repository somewhere.
 
     git clone git@github.com:richardclegg/open_flow_simple_demos.git
 
@@ -35,7 +40,7 @@ that makes every host contact every other host. Exit mininet with Ctrl-D. You us
 
     sudo mn -c
     
-should clean up anythign that did not get properly cleaned in the exit process.
+should clean up anything that did not get properly cleaned in the exit process.
 
 
 ### Mininet toplogies
@@ -56,6 +61,47 @@ from a directory containing the file minitop.py (in this repos) will create the 
 
 Now to work with a POX based openflow controller. These are controllers "handcrafted" in python. 
 
+Within the directory containing pox you can do 
 
+    ./pox.py samples.pretty_log misc.of_tutorial
+
+A stripped down version of the code I used in the video is in this repos. To run it copy it into the pox repository in pox/misc subdirectory. You could then do.
+
+    ./pox.py samples.pretty_log misc.of_tutorial
+
+This will start a controller on your localhost 127.0.0.1 listing on port 6633. You connect this to mininet with:
+
+    sudo mn --topo tree,depth=3,fanout=2  --controller remote --switch ovsk
+    
+Note that this simple controller is a little old now and only works with openflow v1.2. You may see the pox controller throw some errors related to dns but you can also see now that in mininet you can do
+
+    mininet> h1 ping h2
+    
+When you are finished shut down mininet and the pox controller. Don't forget to clear mininet with
+
+    sudo mn -c
+   
+If you want to use the code I used in the computerphile video you would need to copy simplehub.py into the pox directory subdirectory pox/misc and run
+
+    
+
+### Working with floodlight
+
+If you want to do the same with floodlight then in the directory you installed floodlight.
+
+    java -jar target/floodlight.jar
+
+In a browser window you should now be able to browse to http://127.0.0.1:8080/ui/pages/index.html
+    
+This will show you various bits of information about the floodlight controller.
+
+Now if you set up mininet you should also tell it to use OpenFlow 1.3 so that floodlight can get controller information: You could try a simple tree
+
+    sudo mn --topo tree,depth=3,fanout=4 --controller remote --switch ovsk,protocols=OpenFlow13
+
+If you go to your web browser at http://127.0.0.1:8080/ui/pages/topology.html you should be able to see a nice tree topology. If you experiment you can get quite large topologies going. If you experiment with the code in minitop.py you can create your topology programatically.
+
+
+    
 
 
