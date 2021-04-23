@@ -55,11 +55,12 @@ from a directory containing the file minitop.py (in this repos) will create the 
 
 Now to work with a POX based openflow controller. These are controllers "handcrafted" in python. 
 
-Within the directory containing pox you can do 
+Open a terminal and change to the directory where you installed pox:
 
+    cd ~/pox #or wherever
     ./pox.py samples.pretty_log misc.of_tutorial
 
-A stripped down version of the code I used in the video is in this repos. To run it copy it into the pox repository in pox/misc subdirectory. You could then do.
+You could then do.
 
     ./pox.py samples.pretty_log misc.of_tutorial
 
@@ -76,11 +77,14 @@ When you are finished shut down mininet and the pox controller. Don't forget to 
     sudo mn -c
    
 If you want to use the code I used in the computerphile video you would need to copy simplehub.py into the pox directory subdirectory pox/misc and run    
+    
+    ./pox.py samples.pretty_log misc.simple_hub
 
 ### Working with floodlight
 
 If you want to do the same with floodlight then in the directory you installed floodlight.
 
+    cd ~/floodlight #or wherever you installed
     java -jar target/floodlight.jar
 
 In a browser window you should now be able to browse to http://127.0.0.1:8080/ui/pages/index.html
@@ -92,6 +96,8 @@ Now if you set up mininet you should also tell it to use OpenFlow 1.3 so that fl
     sudo mn --topo tree,depth=3,fanout=4 --controller remote --switch ovsk,protocols=OpenFlow13
 
 If you go to your web browser at http://127.0.0.1:8080/ui/pages/topology.html you should be able to see a nice tree topology. If you experiment you can get quite large topologies going. If you experiment with the code in minitop.py you can create your topology programatically.
+
+Pox and floodlight are not bits of code I would put in production (Open vSwitch is). These demos are intended to get you started in a simple way with OpenFlow and SDN, not show you the "latest and greatest" new developments.
 
 
     
