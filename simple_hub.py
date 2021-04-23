@@ -4,6 +4,9 @@
 # Licensed under the Apache License, Version 2.0 (the "License");
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
+#  This is the code I used in the video 
+# to use it copy it into the misc directory of your pox install
+# and then ./pox.py samples.pretty_log misc.simple_hub
 
 """
 An extremely simple POX controller to get you started
@@ -48,6 +51,24 @@ class Tutorial (object):
     # Note that if we didn't get a valid buffer_id, a slightly better
     # implementation would check that we got the full data before
     # sending it (len(packet_in.data) should be == packet_in.total_len)).
+
+
+  def resend_packet (self, packet_in, out_port):
+    """
+    Instructs the switch to resend a packet that it had sent to us.
+    "packet_in" is the ofp_packet_in object the switch had sent to the
+    controller due to a table-miss.
+    """
+    msg = of.ofp_packet_out()
+    msg.data = packet_in
+
+    # Add an action to send to the specified port
+    action = of.ofp_action_output(port = out_port)
+    msg.actions.append(action)
+
+    # Send message to switch
+    self.connection.send(msg)
+
 
   def _handle_PacketIn (self, event):
     """
