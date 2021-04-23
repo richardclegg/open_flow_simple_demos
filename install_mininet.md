@@ -1,5 +1,5 @@
 
-### Installing Mininet
+## Installing Mininet
 
 If you want to play with mininet separate to Floodlight then it is easy enough. On Ubuntu it is easy to configure this should be as simple as
 
@@ -15,12 +15,4 @@ This should get you to a mininet prompt. You can test it with
 
 Ctrl-C will stop the ping. Ctrl-D will log you out.
   
-## Working through examples
 
-Clone this repository somewhere.
-
-    git clone git@github.com:richardclegg/open_flow_simple_demos.git
-
-If you are in the VM you will need to use instead  
-
-    git clone https://github.com/richardclegg/open_flow_simple_demos.git 
