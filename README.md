@@ -91,7 +91,7 @@ In a browser window you should now be able to browse to http://127.0.0.1:8080/ui
     
 This will show you various bits of information about the floodlight controller.
 
-Now if you set up mininet you should also tell it to use OpenFlow 1.3 so that floodlight can get controller information: You could try a simple tree
+Now if you set up mininet you should also tell it to use OpenFlow 1.3 or higher so that floodlight can get controller information: You could try a simple tree
 
     sudo mn --topo tree,depth=3,fanout=4 --controller remote --switch ovsk,protocols=OpenFlow13
 
