@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+# This code creates a topology in mininet. 
+# To run it try 
+
 from mininet.topo import Topo
 
 class CPTopology( Topo ):
