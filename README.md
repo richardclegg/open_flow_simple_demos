@@ -4,19 +4,13 @@ This project should work on Linux or MacOS. I used Ubuntu 20.04 and provide some
 
 1. [Install floodlight](install_floodlight.md) 
 2. [Install mininet](install_mininet.md)
-3. Install pox
-
-This should be as simple as
+3. Install pox. This should be as simple as
 
     git clone http://github.com/noxrepo/pox
 
-5. Clone this repository somewhere.
+4. Clone this repository somewhere. (Note I am using http in case you are working inside the VM).
 
-    git clone git@github.com:richardclegg/open_flow_simple_demos.git
-
-If you are in the VM you will need to use instead  
-
-    git clone https://github.com/richardclegg/open_flow_simple_demos.git 
+    git clone http://github.com/richardclegg/open_flow_simple_demos.git 
 
 ## Working with mininet
 
@@ -81,9 +75,7 @@ When you are finished shut down mininet and the pox controller. Don't forget to 
 
     sudo mn -c
    
-If you want to use the code I used in the computerphile video you would need to copy simplehub.py into the pox directory subdirectory pox/misc and run
-
-    
+If you want to use the code I used in the computerphile video you would need to copy simplehub.py into the pox directory subdirectory pox/misc and run    
 
 ### Working with floodlight
 
