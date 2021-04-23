@@ -5,7 +5,13 @@ This project should work on Linux or MacOS. I used Ubuntu 20.04 and provide some
 1. [Install floodlight](install_floodlight.md) 
 2. [Install mininet](install_mininet.md)
 3. [Install pox](install_pox.md)
-4. Clone this repos
+4. Clone this repository somewhere.
+
+    git clone git@github.com:richardclegg/open_flow_simple_demos.git
+
+If you are in the VM you will need to use instead  
+
+    git clone https://github.com/richardclegg/open_flow_simple_demos.git 
 
 ## Working with mininet
 
